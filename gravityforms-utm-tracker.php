@@ -3,7 +3,7 @@
  * Plugin Name: Gravity Forms UTM Tracker
  * Plugin URI: https://fsm.agency
  * Description: Automatically adds UTM tracking fields to all Gravity Forms
- * Version: 1.2
+ * Version: 1.3
  * Author: Full Spectrum Marketing - RHT
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Plugin constants
-define('GF_UTM_TRACKER_VERSION', '1.2');
+define('GF_UTM_TRACKER_VERSION', '1.3');
 define('GF_UTM_TRACKER_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('GF_UTM_TRACKER_PLUGIN_URL', plugin_dir_url(__FILE__));
 
