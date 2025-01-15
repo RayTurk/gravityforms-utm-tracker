@@ -124,10 +124,25 @@ class GF_UTM_Tracker_Updater {
     public function after_install($response, $hook_extra, $result) {
         global $wp_filesystem;
 
-        $plugin_folder = WP_PLUGIN_DIR . '/' . dirname($this->basename);
-        $wp_filesystem->move($result['destination'], $plugin_folder);
-        $result['destination'] = $plugin_folder;
+        // Get the plugin directory name (without -main or other GitHub additions)
+        $plugin_dir = dirname($this->basename);
 
+        // Get the exact folder name that GitHub created
+        $github_folder = $result['destination'];
+
+        // The desired final destination
+        $proper_destination = WP_PLUGIN_DIR . '/' . $plugin_dir;
+
+        // Delete existing plugin directory if it exists
+        if ($wp_filesystem->is_dir($proper_destination)) {
+            $wp_filesystem->delete($proper_destination, true);
+        }
+
+        // Move from GitHub folder to proper location
+        $wp_filesystem->move($github_folder, $proper_destination);
+        $result['destination'] = $proper_destination;
+
+        // Reactivate if it was active
         if ($this->active) {
             activate_plugin($this->basename);
         }
