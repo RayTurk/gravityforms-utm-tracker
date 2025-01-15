@@ -21,7 +21,7 @@ class GF_UTM_Tracker_Updater {
         // Set the GitHub repository details
         $this->github_url = str_replace(
             array('{owner}', '{repo}'),
-            array('YOUR-GITHUB-USERNAME', 'YOUR-REPO-NAME'),
+            array('RayTurk', 'gravityforms-utm-tracker'),
             $this->github_url
         );
 
